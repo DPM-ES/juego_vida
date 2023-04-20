@@ -1,0 +1,138 @@
+"""
+    El juego de la vida
+    Version: 1.0
+    Proyecto realizado en Python usando la librería pygame
+    Autor: DPM_ES
+"""
+
+# Importaciones
+import pygame
+import numpy as np
+
+# Inicialización de los módulos de pygame
+pygame.init()
+
+# Colores
+c_blak = (0, 0, 0)
+c_green = (0, 255, 0)
+c_ggray = (100, 200, 100)
+c_red = (255, 0, 0)
+
+# Tamño e inicialización de la pantalla del juego
+height = width = 1000 # Nota: Se puede cambiar este valor para hacer la pantalla más o menos grande
+game_field = pygame.display.set_mode((width + 1, height + 1)) # Nota: añado un pixel para que no se corte la cuadrícula
+pygame.display.set_caption("DPM: El juego de la vida (v1.0)")
+game_field.fill(c_blak)
+external_box = [(0, 0), (width, 0), (width, height), (0, height)]
+
+# Número y tamaño de las celdas
+num_cel_x = num_cel_y = 50 # Se puede cambiar este valor para hacer tener más o menos casillas
+dim_cel_h = height / num_cel_y
+dim_cel_w = width / num_cel_x
+
+
+# Estado de las celdas juego. 1: Vivas; 0: Muertas
+game_state = np.zeros((num_cel_x, num_cel_y))
+
+# Estado de actividad del juego
+pause = True
+
+# Bucle de ejecución
+while True:
+
+    # Realizamos una copia para realizar los cambios en cada tiempo y no de manera secuencial
+    new_game_state = np.copy(game_state)
+
+    # Reseteamos los colores de la pantalla para poder representar el estado sin solapamientos y
+    game_field.fill(c_blak)
+    pygame.time.wait(100)
+
+    # Recogemos eventos de teclado y ratón
+    for event in pygame.event.get():
+
+        # Evento de plusar en cerrar ventana y acción de cerrar juego
+        if event.type == pygame.QUIT:
+            pygame.quit()
+
+        # Evento de pulsar el teclado
+        if event.type == pygame.KEYDOWN:
+            # Pausa el juego a pulsar la barra espaciadora
+            if event.key == pygame.K_SPACE:
+                pause = not pause
+            # Al pulsar f, pone todas las casillas a 1 (vivas)
+            if event.key == pygame.K_f:
+                new_game_state = np.full((num_cel_x, num_cel_y), 1)
+
+            # Al pulsar e, pone todas las casillas a 0 (muertas)
+            if event.key == pygame.K_e:
+                new_game_state = np.zeros((num_cel_x, num_cel_y))
+
+        # Recoge el click izquierdo y pone la casilla en 1
+        if pygame.mouse.get_pressed()[0]:
+            pos_x, pos_y = pygame.mouse.get_pos()
+            cel_x, cel_y = int(np.floor(pos_x / dim_cel_w)), int(np.floor(pos_y / dim_cel_h))
+            # new_game_state[cel_x, cel_y] = 1
+            try:
+                new_game_state[cel_x, cel_y] = 1
+            except IndexError:
+                pass
+
+        # Recoge el click derecho y pone la casilla en 0
+        if pygame.mouse.get_pressed()[2]:
+            pos_x, pos_y = pygame.mouse.get_pos()
+            cel_x, cel_y = int(np.floor(pos_x / dim_cel_w)), int(np.floor(pos_y / dim_cel_h))
+            try:
+                new_game_state[cel_x, cel_y] = 0
+            except IndexError:
+                pass
+
+
+    # Bucle de recorrido y dibujo de la pantalla
+    for y in range(num_cel_y):
+        for x in range(num_cel_x):
+
+            if not pause:
+
+                # Comprobación de los estados vecinos
+                # se usa la operación módulo para evitar el error "IndexError" (otorga forma toroidal al mundo).
+                n_neigh = game_state[(x - 1) % num_cel_x, (y - 1) % num_cel_y] + \
+                          game_state[(x)     % num_cel_x, (y - 1) % num_cel_y] + \
+                          game_state[(x + 1) % num_cel_x, (y - 1) % num_cel_y] + \
+                          game_state[(x - 1) % num_cel_x, (y)     % num_cel_y] + \
+                          game_state[(x + 1) % num_cel_x, (y)     % num_cel_y] + \
+                          game_state[(x - 1) % num_cel_x, (y + 1) % num_cel_y] + \
+                          game_state[(x)     % num_cel_x, (y + 1) % num_cel_y] + \
+                          game_state[(x + 1) % num_cel_x, (y + 1) % num_cel_y]
+
+                #Reglas del juego de la vida
+
+                # Regla 1: Si una célula está viva y tiene dos o tres vecinas vivas, sobrevive.
+                if game_state[x, y] == 1 and (n_neigh < 2 or n_neigh > 3):
+                    new_game_state[x, y] = 0
+
+                # Regla 2: Si una célula está muerta y tiene tres vecinas vivas, nace.
+                elif game_state[x, y] == 0 and n_neigh == 3:
+                    new_game_state[x, y] = 1
+
+
+            # Representación de las cajas que contienen las celdas
+            # Se genera dibujando un poligono siguiendo las coordenadas de cada vertice.
+            cell_box = [((x) * dim_cel_w, (y) * dim_cel_h),
+                        ((x + 1) * dim_cel_w, (y)     * dim_cel_h),
+                        ((x + 1) * dim_cel_w, (y + 1) * dim_cel_h),
+                        ((x)     * dim_cel_w, (y + 1) * dim_cel_h)]
+
+            # Dibujamos la celda
+            if new_game_state[x, y]:
+                pygame.draw.polygon(game_field, c_green, cell_box, 0)
+            pygame.draw.polygon(game_field, c_ggray, cell_box, 1)
+
+    # Dibujamos en rojo el contorno cuando el juego está en pausa
+    if pause:
+        pygame.draw.polygon(game_field, c_red, external_box, 1)
+
+    # Acutualización del estado del juego.
+    game_state = np.copy(new_game_state)
+
+    # Acutualización de la pantalla.
+    pygame.display.flip()
