@@ -1,4 +1,4 @@
-# juego_vida
+# El juego de la vida
 Desarrollo del juego ***El juego de la Vida***
 
 El ***Juego de la vida*** es un autómata celular diseñado por el matemático británico John Horton Conway en 1970. Es un juego de cero jugadores, en el que su evolución es determinada por un estado inicial, sin requerir intervención adicional. Se considera un sistema Turing completo que puede simular cualquier otra Máquina de Turing.
@@ -8,6 +8,9 @@ Fuente: [Wikipedia](https://es.wikipedia.org/wiki/Juego_de_la_vida)
 ___
 
 ## El juego de la vida
+~~~
+Juego_Vida_v1.py
+~~~
 
 En el juego de la vida existen 2 reglas:
 - Regla 1: Si una célula está viva y tiene dos o tres vecinas vivas, sobrevive.
@@ -29,6 +32,9 @@ En cada tiempo, se comprueban los vecinos y se se cumple alguna de las reglas, s
 ___
 
 ## El juego de la vida color
+~~~
+Juego_Vida_v1_color.py
+~~~
 
 Sigue la misma lógica que el juego base, sin embargo la matriz tiene una dimensión adicional, lo que se traduce en que existen tres capas independientes, una para el rojo, otra para el verde y una tercera para el azul. Son independientes, una célula roja no interactua con una verde, sin embargo, a la hora de representar, solo se ve una matriz bidimensional, por tanto, si una célula tiene solo el rojo activado, se verá ese color, pero si tiene el rojo y el verde se verá el amarillo (que es la composición de ambos colores). Funciona de manera similar a una pantalla.
 
