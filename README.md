@@ -18,6 +18,12 @@ En el juego de la vida existen 2 reglas:
 
 En cada tiempo, se comprueban los vecinos y se se cumple alguna de las reglas, se aplicará su efecto, y al final del cálculo de toda la matriz de manera simultánea, se dibujará el nuevo estado de la misma. Así en cada tiempo de reloj.
 
+~~~
+Juego_Vida_v2.py
+~~~
+
+La versión 2 es igual que la 1, sin embargo, he hecho el código más legible mediante funciones. Respecto al juego, he añadido márgenes al universo y he añadido los cuadros de información para saber la velocidad el juego, el número de células vivas y el número de tiempos pasados desde el inicio.
+
 ### Controles
 
 - Barra espaciadora: Detiene o activa el reloj
