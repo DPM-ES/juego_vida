@@ -22,6 +22,7 @@ En cada tiempo, se comprueban los vecinos y se se cumple alguna de las reglas, s
 - Clic Der: Mata la céluca apuntada
 - Tecla e: Mata todas las célucas
 - Tecla f: Revive todas las célucas (tenez en cuenta que si se activa el tiempo así, al siguiente paso estarán todas muertas)
+- Tecla q: Cierra el juego
 - Tecla +: Aumenta la velocidad (hay 5 tiempos)
 - Tecla -: Rebaja la velocidad (hay 5 tiempos)
 
@@ -38,6 +39,7 @@ Sigue la misma lógica que el juego base, sin embargo la matriz tiene una dimens
 - Clic Der: Mata la céluca apuntada (quita todos los colores)
 - Tecla e: Mata todas las célucas
 - Tecla f: Revive todas las célucas (tenez en cuenta que si se activa el tiempo así, al siguiente paso estarán todas muertas)
+- Tecla q: Cierra el juego
 - Tecla +: Aumenta la velocidad (hay 5 tiempos)
 - Tecla -: Rebaja la velocidad (hay 5 tiempos)
 - Tecla 1: Activa el color rojo
