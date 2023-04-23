@@ -6,6 +6,12 @@ El ***Juego de la vida*** es un autómata celular diseñado por el matemático b
 Fuente: [Wikipedia](https://es.wikipedia.org/wiki/Juego_de_la_vida)
 
 ___
+#### Requisitos
+Neceista las librerías Numpy y Pygame
+~~~
+pip install numpy pygame
+~~~
+___
 
 ## El juego de la vida
 ~~~
