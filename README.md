@@ -18,10 +18,10 @@ En cada tiempo, se comprueban los vecinos y se se cumple alguna de las reglas, s
 ### Controles
 
 - Barra espaciadora: Detiene o activa el reloj
-- Clic Izq: Revive la céluca apuntada
-- Clic Der: Mata la céluca apuntada
-- Tecla e: Mata todas las célucas
-- Tecla f: Revive todas las célucas (tenez en cuenta que si se activa el tiempo así, al siguiente paso estarán todas muertas)
+- Clic Izq: Revive la célula apuntada
+- Clic Der: Mata la célula apuntada
+- Tecla e: Mata todas las células
+- Tecla f: Revive todas las células (tened en cuenta que si se activa el tiempo así, al siguiente paso estarán todas muertas)
 - Tecla q: Cierra el juego
 - Tecla +: Aumenta la velocidad (hay 5 tiempos)
 - Tecla -: Rebaja la velocidad (hay 5 tiempos)
@@ -35,10 +35,10 @@ Sigue la misma lógica que el juego base, sin embargo la matriz tiene una dimens
 ### Controles
 
 - Barra espaciadora: Detiene o activa el reloj
-- Clic Izq: Revive la céluca apuntada (sólo del color activo)
-- Clic Der: Mata la céluca apuntada (quita todos los colores)
-- Tecla e: Mata todas las célucas
-- Tecla f: Revive todas las célucas (tenez en cuenta que si se activa el tiempo así, al siguiente paso estarán todas muertas)
+- Clic Izq: Revive la célula apuntada (sólo del color activo)
+- Clic Der: Mata la célula apuntada (quita todos los colores)
+- Tecla e: Mata todas las células
+- Tecla f: Revive todas las células (tened en cuenta que si se activa el tiempo así, al siguiente paso estarán todas muertas)
 - Tecla q: Cierra el juego
 - Tecla +: Aumenta la velocidad (hay 5 tiempos)
 - Tecla -: Rebaja la velocidad (hay 5 tiempos)
