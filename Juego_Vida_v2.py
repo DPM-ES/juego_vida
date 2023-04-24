@@ -130,7 +130,7 @@ pygame.init()
 c_blak = (0, 0, 0)
 c_white = (255, 255, 255)
 c_green = (0, 255, 0)
-c_ggray = (100, 200, 100)
+c_gray = (100, 200, 100)
 c_red = (255, 0, 0)
 
 # Tamño e inicialización de la pantalla del juego
