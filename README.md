@@ -22,7 +22,7 @@ En el juego de la vida existen 2 reglas:
 - Regla 1: Si una célula está viva y tiene dos o tres vecinas vivas, sobrevive.
 - Regla 2: Si una célula está muerta y tiene tres vecinas vivas, nace.
 
-En cada tiempo, se comprueban los vecinos y se se cumple alguna de las reglas, se aplicará su efecto, y al final del cálculo de toda la matriz de manera simultánea, se dibujará el nuevo estado de la misma. Así en cada tiempo de reloj.
+En cada tiempo, se comprueban los vecinos y si se cumple alguna de las reglas, se aplicará su efecto, y al final del cálculo de toda la matriz de manera simultánea, se dibujará el nuevo estado de la misma. Así en cada tiempo de reloj.
 
 ~~~
 Juego_Vida_v2.py
